@@ -4,9 +4,9 @@ import android.content.Context;
 import android.database.DataSetObserver;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.ListAdapter;
 
+import com.app.startNstop.data.SNSProject;
 import com.app.startNstop.views.ProjectTileView;
 
 import java.util.ArrayList;
@@ -16,11 +16,13 @@ import java.util.ArrayList;
  */
 public class ProjectNamesAdapter implements ListAdapter {
 
-    ArrayList<String> mData;
+    ArrayList<SNSProject> mData;
     private Context mContext;
 
-    public ProjectNamesAdapter(ArrayList<String> data, Context contxet) {
+    public ProjectNamesAdapter(ArrayList<SNSProject> data, Context contxet) {
+
         mData = data;
+        mContext = contxet;
     }
 
 
@@ -46,7 +48,7 @@ public class ProjectNamesAdapter implements ListAdapter {
 
     @Override
     public int getCount() {
-        return 0;
+        return mData.size();
     }
 
     @Override
@@ -67,11 +69,13 @@ public class ProjectNamesAdapter implements ListAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        if (convertView == null){
+        if (convertView == null) {
             convertView = new ProjectTileView(mContext);
         }
 
-        //TODO
+        if (mData.size() < position) {
+            ((ProjectTileView) convertView).setName(mData.get(position).projectName);
+        }
 
         return convertView;
     }
@@ -83,7 +87,7 @@ public class ProjectNamesAdapter implements ListAdapter {
 
     @Override
     public int getViewTypeCount() {
-        return 0;
+        return 1;
     }
 
     @Override

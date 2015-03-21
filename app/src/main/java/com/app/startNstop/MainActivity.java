@@ -2,6 +2,7 @@ package com.app.startNstop;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -10,14 +11,15 @@ import android.widget.ListView;
 
 import com.activeandroid.ActiveAndroid;
 import com.app.startNstop.adapters.ProjectNamesAdapter;
+import com.app.startNstop.data.SNSProject;
 
 import java.util.ArrayList;
 
 
 public class MainActivity extends Activity implements View.OnClickListener {
 
+    private static final String TAG = MainActivity.class.getSimpleName();
     private ListView mProjectTilesList;
-    private ArrayList<String> projectNamesList;
     private ProjectNamesAdapter mAdapter;
     private ImageButton mFab;
 
@@ -55,10 +57,12 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     private void initUiList() {
 
-        projectNamesList.add("1");
-        projectNamesList.add("2");
-        projectNamesList.add("3");
-        mAdapter = new ProjectNamesAdapter(projectNamesList, this);
+//        SNSProject project = new SNSProject();
+//        project.projectName = "test1";
+//        project.save();
+
+        ArrayList<SNSProject> all = (ArrayList<SNSProject>) SNSProject.getAll();
+        mAdapter = new ProjectNamesAdapter(all, this);
 
         mProjectTilesList.setAdapter(mAdapter);
     }

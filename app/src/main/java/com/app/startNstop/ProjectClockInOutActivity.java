@@ -29,12 +29,7 @@ public class ProjectClockInOutActivity extends Activity {
 
         mProjectTilesList = (ListView) findViewById(R.id.projectTilesList);
 
-        projectNamesList.add("1");
-        projectNamesList.add("2");
-        projectNamesList.add("3");
-        mAdapter = new ProjectNamesAdapter(projectNamesList, this);
 
-        mProjectTilesList.setAdapter(mAdapter);
     }
 
 

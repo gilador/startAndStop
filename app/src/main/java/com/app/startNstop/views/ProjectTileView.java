@@ -2,8 +2,8 @@ package com.app.startNstop.views;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.view.View;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.app.startNstop.R;
 
@@ -12,23 +12,37 @@ import com.app.startNstop.R;
  */
 public class ProjectTileView extends RelativeLayout {
 
+    TextView mName;
+
     public ProjectTileView(Context context) {
         super(context);
+        init();
     }
 
     public ProjectTileView(Context context, AttributeSet attrs) {
         super(context, attrs);
+        init();
     }
 
     public ProjectTileView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        init();
     }
 
     public ProjectTileView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
+        init();
     }
 
-    private void init(){
+    private void init() {
+
         inflate(getContext(), R.layout.project_tile_view, this);
+        mName = (TextView) findViewById(R.id.name);
+
+
+    }
+
+    public void setName(String name) {
+        mName.setText(name);
     }
 }
