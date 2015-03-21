@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 
@@ -21,7 +22,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private static final String TAG = MainActivity.class.getSimpleName();
     private ListView mProjectTilesList;
     private ProjectNamesAdapter mAdapter;
-    private ImageButton mFab;
+    private Button mFab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +53,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     private void initFindElements() {
         mProjectTilesList = (ListView) findViewById(R.id.projectTilesList);
-        mFab = (ImageButton) findViewById(R.id.fabButton);
+        mFab = (Button) findViewById(R.id.fabButton);
     }
 
     private void initUiList() {
