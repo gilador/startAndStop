@@ -3,6 +3,7 @@
     package="com.app.startNstop" >
 
     <application
+
         android:name="com.activeandroid.app.Application"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
