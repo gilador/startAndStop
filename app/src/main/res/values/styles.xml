@@ -5,4 +5,56 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="dialog">
+        <item name="android:background">@drawable/dialog_background</item>
+    </style>
+
+    <style name="header">
+        <item name="android:textColor">#000000</item>
+    </style>
+
+    <style name="header.1">
+        <item name="android:textSize">25dp</item>
+    </style>
+
+    <style name="header.2">
+        <item name="android:textSize">20dp</item>
+    </style>
+
+    <style name="content">
+        <item name="android:textColor">@color/content_gray</item>
+    </style>
+
+    <style name="content.1">
+        <item name="android:textSize">20dp</item>
+    </style>
+
+    <style name="content.2">
+        <item name="android:textSize">15dp</item>
+    </style>
+
+    <style name="content.2.underline">
+        <item name="android:textSize">15dp</item>
+        <item name="android:background">@drawable/undeline_text</item>
+    </style>
+
+    <style name="button">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">10dp</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="button.ok">
+        <item name="android:background">@drawable/yellow_button_background</item>
+        <item name="android:layout_width">60dp</item>
+        <item name="android:layout_height">25dp</item>
+        <item name="android:layout_gravity">right</item>
+    </style>
+
+    <style name="button.cancel">
+        <item name="android:background">@drawable/gray_button_background</item>
+        <item name="android:layout_width">60dp</item>
+        <item name="android:layout_height">25dp</item>
+        <item name="android:layout_gravity">left</item>
+    </style>
 </resources>

@@ -6,8 +6,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
 
-import com.app.startNstop.adapters.ProjectNamesAdapter;
-
 import java.util.ArrayList;
 
 
@@ -15,7 +13,6 @@ public class ProjectClockInOutActivity extends Activity {
 
     private ListView mProjectTilesList;
     private ArrayList<String> projectNamesList;
-    private ProjectNamesAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

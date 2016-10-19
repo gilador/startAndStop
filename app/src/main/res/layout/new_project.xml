@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/dialog"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <TextView
+        style="@style/header.2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Create A New Project" />
+
+    <EditText
+        android:id="@+id/new_project_name"
+        style="@style/content.2.underline"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:hint="@string/new_project_hint"
+        android:paddingLeft="40dp" />
+
+    <Button
+        android:id="@+id/cancel"
+        style="@style/button.cancel"
+        android:layout_marginLeft="80dp"
+        android:text="@string/cancel" />
+
+    <Button
+        android:id="@+id/ok"
+        style="@style/button.ok"
+        android:layout_marginRight="80dp"
+        android:layout_marginTop="-25dp"
+        android:text="@string/ok" />
+
+</LinearLayout>

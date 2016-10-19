@@ -1,4 +1,4 @@
-package com.app.startNstop.views.Dialogs;
+package com.app.startNstop.view.Dialogs;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -39,7 +39,7 @@ public class NewProjectDialog extends Dialog {
     }
 
     private void init(){
-        setContentView(R.layout.new_project_dialog);
+        setContentView(R.layout.new_project);
         mNewProjectName = (TextView) findViewById(R.id.new_project_name);
     }
 }

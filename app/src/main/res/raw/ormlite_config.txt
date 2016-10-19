@@ -1,0 +1,18 @@
+#
+# generated on 2016/10/17 12:33:51
+#
+# --table-start--
+dataClass=com.app.startNstop.model.ProjectsTable
+tableName=projects_table
+# --table-fields-start--
+# --field-start--
+fieldName=id
+columnName=_id
+generatedId=true
+# --field-end--
+# --field-start--
+fieldName=name
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################

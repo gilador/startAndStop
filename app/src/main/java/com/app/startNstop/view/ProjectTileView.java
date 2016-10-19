@@ -1,4 +1,4 @@
-package com.app.startNstop.views;
+package com.app.startNstop.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
