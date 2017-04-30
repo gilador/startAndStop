@@ -6,7 +6,6 @@
         android:maxSdkVersion="24" />
     <application
 
-        android:name="com.activeandroid.app.Application"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
@@ -16,7 +15,7 @@
         <meta-data android:name="AA_DB_VERSION" android:value="1" />
 
         <activity
-            android:name="com.app.startNstop.view.activitiy.MainActivity"
+            android:name="com.app.startNstop.view.activity.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

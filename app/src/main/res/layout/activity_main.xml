@@ -1,26 +1,26 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                tools:context=".view.activitiy.MainActivity">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.activity.MainActivity">
 
-    <ListView
+    <android.support.v7.widget.RecyclerView
         android:id="@+id/projectTilesList"
         android:layout_width="wrap_content"
         android:layout_height="300dp"
-        android:scrollbars="vertical"
-        android:layout_centerInParent="true"
-        android:layout_marginLeft="5dp"
-        android:layout_marginBottom="5dp"/>
+        android:layout_alignParentStart="true"
+        android:layout_margin="15dp"
+        android:padding="7dp"
+        android:scrollbars="vertical" />
 
     <Button
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="10dp"
-        android:layout_marginBottom="10dp"
         android:id="@+id/fabButton"
         android:layout_width="75dp"
         android:layout_height="75dp"
-        android:background="@drawable/fab"/>
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/fab" />
 
 </RelativeLayout>

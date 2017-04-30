@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 21
     defaultConfig {
-        applicationId "com.example.fonts.startandstop"
+        applicationId "com.example.fonts.startaNdstop"
         minSdkVersion 21
         targetSdkVersion 21
         versionCode 1
@@ -15,11 +15,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    buildToolsVersion '24.0.3'
+    buildToolsVersion '25.0.0'
 }
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.j256.ormlite:ormlite-core:5.0'
     compile 'com.j256.ormlite:ormlite-android:5.0'
+    compile 'com.android.support:recyclerview-v7:26.0.0-alpha1'
 }

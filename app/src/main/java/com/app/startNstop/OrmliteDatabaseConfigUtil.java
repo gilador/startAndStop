@@ -1,6 +1,5 @@
 package com.app.startNstop;
 
-import com.app.startNstop.model.ProjectsTable;
 import com.j256.ormlite.android.apptools.OrmLiteConfigUtil;
 
 import java.io.File;
@@ -17,7 +16,7 @@ public class OrmliteDatabaseConfigUtil extends OrmLiteConfigUtil {
     /**
      * classes represents the models to use for generating the ormlite_config.txt file
      */
-    private static final Class<?>[] classes = new Class[] {ProjectsTable.class};
+    private static final Class<?>[] classes = new Class[] {com.app.startNstop.model.ProjectsTable.class};
 
     /**
      * Given that this is a separate program from the android app, we have to use
