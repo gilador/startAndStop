@@ -2,7 +2,7 @@
 # generated on 2017/04/28 02:29:22
 #
 # --table-start--
-dataClass=com.app.startNstop.model.ProjectsTable
+dataClass=com.app.startNstop.model.Project
 tableName=projects_table
 # --table-fields-start--
 # --field-start--

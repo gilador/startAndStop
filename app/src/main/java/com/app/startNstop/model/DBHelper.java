@@ -23,7 +23,7 @@ public class DBHelper extends OrmLiteSqliteOpenHelper {
     /**
      * The data access object used to interact with the Sqlite database to do C.R.U.D operations.
      */
-    private Dao<ProjectsTable, Long> mProjectsTable;
+    private Dao<Project, Long> mProjectsTable;
 
     public DBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION,
@@ -39,9 +39,9 @@ public class DBHelper extends OrmLiteSqliteOpenHelper {
         try {
 
             /**
-             * creates the ProjectsTable database table
+             * creates the Project database table
              */
-            TableUtils.createTable(connectionSource, ProjectsTable.class);
+            TableUtils.createTable(connectionSource, Project.class);
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -55,7 +55,7 @@ public class DBHelper extends OrmLiteSqliteOpenHelper {
             /**
              * Recreates the database when onUpgrade is called by the framework
              */
-            TableUtils.dropTable(connectionSource, ProjectsTable.class, false);
+            TableUtils.dropTable(connectionSource, Project.class, false);
             onCreate(database, connectionSource);
 
         } catch (SQLException e) {
@@ -68,9 +68,9 @@ public class DBHelper extends OrmLiteSqliteOpenHelper {
      * @return
      * @throws SQLException
      */
-    public Dao<ProjectsTable, Long> getProjectsTableDao() throws SQLException {
+    public Dao<Project, Long> getProjectsTableDao() throws SQLException {
         if(mProjectsTable == null) {
-            mProjectsTable = getDao(ProjectsTable.class);
+            mProjectsTable = getDao(Project.class);
         }
         return mProjectsTable;
     }
