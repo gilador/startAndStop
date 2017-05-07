@@ -37,7 +37,7 @@ public class ProjectTileView extends RelativeLayout {
     private void init() {
 
         inflate(getContext(), R.layout.project_tile_view, this);
-        mName = (TextView) findViewById(R.id.name);
+        mName = (TextView) findViewById(R.id.title);
 
 
     }

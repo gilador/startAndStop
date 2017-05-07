@@ -1,19 +1,22 @@
 package com.app.startNstop.view.activity;
 
 import android.app.Activity;
+import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 
 import com.app.startNstop.R;
-import com.app.startNstop.model.DBHelper;
 import com.app.startNstop.model.Project;
-import com.j256.ormlite.android.apptools.OpenHelperManager;
-import com.j256.ormlite.dao.Dao;
+import com.app.startNstop.view.adapter.ProjectsAdapter;
+import com.app.startNstop.view.fragment.NewProjectDialogFragment;
 
-import java.sql.SQLException;
-import java.util.List;
+import io.realm.Realm;
+import io.realm.RealmChangeListener;
+import io.realm.RealmResults;
+import io.realm.Sort;
 
 
 public class MainActivity extends Activity implements View.OnClickListener {
@@ -22,15 +25,17 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private static final String TAG = MainActivity.class.getSimpleName();
 
     //=========================Private Members======================================================
-    private DBHelper mDBHelper;
     private RecyclerView mProjectTilesList;
     private Button mFab;
+    private ProjectsAdapter mProjectAdapter;
+    private Realm mRealm;
 
     //=========================Activity Impl.=======================================================
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mRealm = Realm.getDefaultInstance();
         initUi();
     }
 
@@ -43,13 +48,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
     }
     //=========================Private Methods======================================================
 
-    private DBHelper getHelper() {
-        if (mDBHelper == null) {
-            mDBHelper = OpenHelperManager.getHelper(this, DBHelper.class);
-        }
-        return mDBHelper;
-    }
-
     private void initUi() {
 
         initFindElements();
@@ -61,17 +59,15 @@ public class MainActivity extends Activity implements View.OnClickListener {
     }
 
     private void initUiList() {
+        RealmResults<Project> result =  mRealm.where(Project.class).findAllSortedAsync("date", Sort.DESCENDING);
+        result.addChangeListener(new RealmChangeListener<RealmResults<Project>>() {
+            @Override
+            public void onChange(RealmResults<Project> element) {
+                mProjectAdapter = new ProjectsAdapter(element, true);
+                mProjectTilesList.setAdapter(mProjectAdapter);
+            }
+        });
 
-        try {
-            Dao<Project, Long> dao = getHelper().getProjectsTableDao();
-            List<Project> allProjects = dao.queryForAll();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-//        ArrayList<SNSProject> all = (ArrayList<SNSProject>) SNSProject.getAll();
-//        mAdapter = new ProjectNamesAdapter(all, this);
-//
-//        mProjectTilesList.setAdapter(mAdapter);
     }
 
     private void initListener() {
@@ -84,5 +80,21 @@ public class MainActivity extends Activity implements View.OnClickListener {
     }
 
     private void createNewProject() {
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        Fragment prev = getFragmentManager().findFragmentByTag("dialog");
+        if (prev != null) {
+            ft.remove(prev);
+        }
+        ft.addToBackStack(null);
+
+        // Create and show the dialog.
+        NewProjectDialogFragment newFragment = new NewProjectDialogFragment();
+        newFragment.show(ft, "dialog");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mRealm.close();
     }
 }

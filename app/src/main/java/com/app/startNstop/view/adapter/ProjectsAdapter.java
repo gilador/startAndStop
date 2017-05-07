@@ -1,6 +1,6 @@
 package com.app.startNstop.view.adapter;
 
-import android.content.Context;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,14 +9,22 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.app.startNstop.R;
+import com.app.startNstop.model.Project;
 
-import static java.security.AccessController.getContext;
+import io.realm.OrderedRealmCollection;
+import io.realm.RealmRecyclerViewAdapter;
 
 /**
  * Created by gor on 08/04/2017.
  */
 
-public class ProjectsAdapter extends RecyclerView.CursorRecyclerViewAdapter<ProjectsAdapter.ViewHolder> {
+public class ProjectsAdapter extends RealmRecyclerViewAdapter<Project, ProjectsAdapter.ViewHolder> {
+
+
+    public ProjectsAdapter(@Nullable OrderedRealmCollection<Project> data, boolean autoUpdate) {
+        super(data, autoUpdate);
+    }
+
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         RelativeLayout view = (RelativeLayout) LayoutInflater.from(parent.getContext())
@@ -27,24 +35,9 @@ public class ProjectsAdapter extends RecyclerView.CursorRecyclerViewAdapter<Proj
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-
+        holder._title.setText(getItem(position).getName());
     }
 
-    @Override
-    public int getItemCount() {
-        return 0;
-    }
-
-//    @Override
-//    public View getView(int position, View convertView, ViewGroup parent) {
-//
-//        if(convertView == null){
-//            LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-//            convertView = inflater.inflate(R.layout.project_tile_view, parent, false);
-//
-//        }
-//        return super.getView(position, convertView, parent);
-//    }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView _title;

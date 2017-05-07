@@ -86,15 +86,14 @@
     </content>
     <orderEntry type="jdk" jdkName="Android API 21 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" exported="" name="ormlite-core-5.0" level="project" />
     <orderEntry type="library" exported="" name="support-core-ui-26.0.0-alpha1" level="project" />
     <orderEntry type="library" exported="" name="activeandroid-3.0" level="project" />
-    <orderEntry type="library" exported="" name="ormlite-android-5.0" level="project" />
     <orderEntry type="library" exported="" name="realm-android-library-3.1.4" level="project" />
     <orderEntry type="library" exported="" name="recyclerview-v7-26.0.0-alpha1" level="project" />
     <orderEntry type="library" exported="" name="relinker-1.2.2" level="project" />
     <orderEntry type="library" exported="" name="support-compat-26.0.0-alpha1" level="project" />
     <orderEntry type="library" exported="" name="support-annotations-26.0.0-alpha1" level="project" />
     <orderEntry type="library" exported="" name="realm-annotations-3.1.4" level="project" />
+    <orderEntry type="library" exported="" name="android-adapters-2.0.0" level="project" />
   </component>
 </module>

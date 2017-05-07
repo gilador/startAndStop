@@ -1,17 +1,19 @@
 package com.app.startNstop.model;
 
-import com.j256.ormlite.field.DatabaseField;
-import com.j256.ormlite.table.DatabaseTable;
+import java.util.Date;
 
 import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
 
 /**
  * Created by gor on 09/10/2016.
  */
 
-public class Project extends RealmObject{
+public class Project extends RealmObject {
+    @PrimaryKey
     private Long id;
     private String name;
+    private Date date;
 
     public Long getId() {
         return id;
@@ -27,5 +29,13 @@ public class Project extends RealmObject{
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 }
