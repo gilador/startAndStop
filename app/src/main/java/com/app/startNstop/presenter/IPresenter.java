@@ -1,11 +1,11 @@
 package com.app.startNstop.presenter;
 
+import com.app.startNstop.model.IModel;
+import com.app.startNstop.view.IView;
+
 /**
  * Created by gor on 12/05/2017.
  */
 
-public interface IPresenter<T> {
-
-    public void onResume(T view);
-    public void onPause();
+public interface IPresenter extends IView.IViewlListener, IModel.IModelListener {
 }

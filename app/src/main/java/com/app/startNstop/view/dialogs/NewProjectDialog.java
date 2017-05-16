@@ -1,4 +1,4 @@
-package com.app.startNstop.view.Dialogs;
+package com.app.startNstop.view.dialogs;
 
 import android.app.Dialog;
 import android.content.Context;

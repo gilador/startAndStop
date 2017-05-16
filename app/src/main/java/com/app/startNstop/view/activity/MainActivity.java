@@ -1,6 +1,5 @@
 package com.app.startNstop.view.activity;
 
-import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
@@ -10,8 +9,14 @@ import android.widget.Button;
 
 import com.app.startNstop.R;
 import com.app.startNstop.model.db.Project;
+import com.app.startNstop.presenter.IPresenter;
+import com.app.startNstop.view.IView;
+import com.app.startNstop.view.MainView;
+import com.app.startNstop.view.MainViewImpl;
 import com.app.startNstop.view.adapter.ProjectsAdapter;
 import com.app.startNstop.view.fragment.NewProjectDialogFragment;
+
+import javax.inject.Inject;
 
 import io.realm.Realm;
 import io.realm.RealmChangeListener;
@@ -19,7 +24,7 @@ import io.realm.RealmResults;
 import io.realm.Sort;
 
 
-public class MainActivity extends Activity implements View.OnClickListener {
+public class MainActivity<M extends MainViewImpl> extends BaseActivity implements View.OnClickListener {
 
     //=========================Static===============================================================
     private static final String TAG = MainActivity.class.getSimpleName();
@@ -30,6 +35,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private ProjectsAdapter mProjectAdapter;
     private Realm mRealm;
 
+    @Inject private MainView mainView;
+
     //=========================Activity Impl.=======================================================
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +44,11 @@ public class MainActivity extends Activity implements View.OnClickListener {
         setContentView(R.layout.activity_main);
         mRealm = Realm.getDefaultInstance();
         initUi();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
     }
 
     //=========================View.OnClickListener Impl.===========================================
@@ -64,7 +76,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
             @Override
             public void onChange(RealmResults<Project> element) {
                 mProjectAdapter = new ProjectsAdapter(element, true);
-                mProjectTilesList.setAdapter(mProjectAdapter);
+//                mProjectTilesList.setAdapter(mProjectAdapter);
             }
         });
 
@@ -96,5 +108,11 @@ public class MainActivity extends Activity implements View.OnClickListener {
     protected void onDestroy() {
         super.onDestroy();
         mRealm.close();
+    }
+
+
+    @Override
+    MainView getView() {
+        return null;
     }
 }
