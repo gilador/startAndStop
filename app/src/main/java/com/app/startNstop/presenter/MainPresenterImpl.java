@@ -17,7 +17,9 @@ public class MainPresenterImpl<MainView> implements MainPresenter {
     @Inject
     MainViewImpl mView;
 
-
+    MainPresenterImpl(){
+        mModel = new MainModelImpl<MainPresenter>(this);
+    }
 
     @Override
     public void onModelStart() {

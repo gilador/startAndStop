@@ -1,4 +1,4 @@
-package com.app.startNstop.view.activity;
+package com.app.startNstop.view.android.activity;
 
 import android.support.v7.app.AppCompatActivity;
 

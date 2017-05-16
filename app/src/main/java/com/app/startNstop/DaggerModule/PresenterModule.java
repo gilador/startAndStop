@@ -1,6 +1,6 @@
 package com.app.startNstop.DaggerModule;
 
-import com.app.startNstop.model.IMainModel;
+import com.app.startNstop.model.MainModel;
 import com.app.startNstop.presenter.MainPresenter;
 
 import javax.inject.Singleton;
@@ -21,7 +21,7 @@ public class PresenterModule {
 
     @Provides
     @Singleton
-    MainPresenter providesMainPresenter(IMainModel locationModel){
+    MainPresenter providesMainPresenter(MainModel locationModel){
         return new MainPresenterImpl(locationModel);
     }
 

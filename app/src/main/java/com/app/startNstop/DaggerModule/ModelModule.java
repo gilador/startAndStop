@@ -1,6 +1,6 @@
 package com.app.startNstop.DaggerModule;
 
-import com.app.startNstop.model.IMainModel;
+import com.app.startNstop.model.MainModel;
 import com.app.startNstop.model.MainModelImpl;
 
 import javax.inject.Singleton;
@@ -17,7 +17,7 @@ public class ModelModule {
 
     @Provides
     @Singleton
-    IMainModel providesLocationModel(){
+    MainModel providesLocationModel(){
         return new MainModelImpl();
     }
 

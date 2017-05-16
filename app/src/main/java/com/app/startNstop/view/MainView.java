@@ -5,4 +5,7 @@ package com.app.startNstop.view;
  */
 
 public interface MainView extends IView {
+    interface MainViewlListener extends IViewlListener{
+
+    }
 }

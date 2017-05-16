@@ -1,4 +1,4 @@
-package com.app.startNstop.view.adapter;
+package com.app.startNstop.view.android.adapter;
 
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;

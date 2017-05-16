@@ -8,4 +8,5 @@ import com.app.startNstop.view.IView;
  */
 
 public interface IPresenter extends IView.IViewlListener, IModel.IModelListener {
+
 }

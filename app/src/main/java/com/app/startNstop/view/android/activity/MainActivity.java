@@ -1,4 +1,4 @@
-package com.app.startNstop.view.activity;
+package com.app.startNstop.view.android.activity;
 
 import android.app.Fragment;
 import android.app.FragmentTransaction;
@@ -9,12 +9,10 @@ import android.widget.Button;
 
 import com.app.startNstop.R;
 import com.app.startNstop.model.db.Project;
-import com.app.startNstop.presenter.IPresenter;
-import com.app.startNstop.view.IView;
 import com.app.startNstop.view.MainView;
 import com.app.startNstop.view.MainViewImpl;
-import com.app.startNstop.view.adapter.ProjectsAdapter;
-import com.app.startNstop.view.fragment.NewProjectDialogFragment;
+import com.app.startNstop.view.android.adapter.ProjectsAdapter;
+import com.app.startNstop.view.android.fragment.NewProjectDialogFragment;
 
 import javax.inject.Inject;
 

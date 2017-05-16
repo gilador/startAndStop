@@ -1,4 +1,4 @@
-package com.app.startNstop.view.activity;
+package com.app.startNstop.view.android.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
