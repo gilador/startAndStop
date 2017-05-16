@@ -9,7 +9,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.app.startNstop.R;
-import com.app.startNstop.model.Project;
+import com.app.startNstop.model.db.Project;
 
 import io.realm.OrderedRealmCollection;
 import io.realm.RealmRecyclerViewAdapter;

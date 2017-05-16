@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.app.startNstop.R;
-import com.app.startNstop.model.Project;
+import com.app.startNstop.model.db.Project;
 import com.app.startNstop.view.adapter.ProjectsAdapter;
 import com.app.startNstop.view.fragment.NewProjectDialogFragment;
 

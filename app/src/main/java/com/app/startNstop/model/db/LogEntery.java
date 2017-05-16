@@ -1,4 +1,4 @@
-package com.app.startNstop.model;
+package com.app.startNstop.model.db;
 
 import io.realm.RealmObject;
 
