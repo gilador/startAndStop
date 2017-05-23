@@ -1,5 +1,6 @@
 package com.app.startNstop.presenter;
 
+import com.app.startNstop.model.MainModel;
 import com.app.startNstop.model.MainModelImpl;
 import com.app.startNstop.view.MainViewImpl;
 
@@ -11,16 +12,18 @@ import javax.inject.Inject;
 
 public class MainPresenterImpl<MainView> implements MainPresenter {
 
-    @Inject
-    MainModelImpl mModel;
+    MainModel mModel;
 
-    @Inject
-    MainViewImpl mView;
+    MainView mView;
 
-    MainPresenterImpl(){
+    public  MainPresenterImpl(MainView view){
         mModel = new MainModelImpl<MainPresenter>(this);
+        mView = view;
     }
 
+    //==============================================================================================
+    //                              Interface IModelListener Impl
+    //==============================================================================================
     @Override
     public void onModelStart() {
 
@@ -31,6 +34,9 @@ public class MainPresenterImpl<MainView> implements MainPresenter {
 
     }
 
+    //==============================================================================================
+    //                              Interface IViewlListener Impl
+    //==============================================================================================
     @Override
     public void onViewResume() {
 
@@ -38,6 +44,11 @@ public class MainPresenterImpl<MainView> implements MainPresenter {
 
     @Override
     public void onViewPause() {
+
+    }
+
+    @Override
+    public void onNewProjectDemand() {
 
     }
 }

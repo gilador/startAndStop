@@ -1,4 +1,4 @@
-package com.app.startNstop.views;
+package com.app.startNstop.view.android;
 
 import DialogFragment;
 

@@ -9,12 +9,11 @@ import android.widget.Button;
 
 import com.app.startNstop.R;
 import com.app.startNstop.model.db.Project;
+import com.app.startNstop.presenter.MainPresenter;
+import com.app.startNstop.presenter.MainPresenterImpl;
 import com.app.startNstop.view.MainView;
-import com.app.startNstop.view.MainViewImpl;
 import com.app.startNstop.view.android.adapter.ProjectsAdapter;
 import com.app.startNstop.view.android.fragment.NewProjectDialogFragment;
-
-import javax.inject.Inject;
 
 import io.realm.Realm;
 import io.realm.RealmChangeListener;
@@ -22,41 +21,61 @@ import io.realm.RealmResults;
 import io.realm.Sort;
 
 
-public class MainActivity<M extends MainViewImpl> extends BaseActivity implements View.OnClickListener {
+public class MainActivity extends BaseActivity<MainView> implements View.OnClickListener, MainView {
 
-    //=========================Static===============================================================
+    //==============================================================================================
+    //                              Statics
+    //==============================================================================================
     private static final String TAG = MainActivity.class.getSimpleName();
 
-    //=========================Private Members======================================================
-    private RecyclerView mProjectTilesList;
-    private Button mFab;
+    //==============================================================================================
+    //                              Privates
+    //==============================================================================================
+    private RecyclerView    mProjectTilesList;
+    private Button          mFab;
     private ProjectsAdapter mProjectAdapter;
-    private Realm mRealm;
+    private Realm           mRealm;
+    private MainPresenter   mMainPresenter;
 
-    @Inject private MainView mainView;
-
-    //=========================Activity Impl.=======================================================
+    //==============================================================================================
+    //                              Activity Impl
+    //==============================================================================================
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mRealm = Realm.getDefaultInstance();
+        mMainPresenter = new MainPresenterImpl<>(this);
         initUi();
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
+    protected void onDestroy() {
+        super.onDestroy();
+        mRealm.close();
     }
 
-    //=========================View.OnClickListener Impl.===========================================
+    //==============================================================================================
+    //                              Interface View.OnClickListener Impl
+    //==============================================================================================
     @Override
     public void onClick(View v) {
         if (v.getId() == mFab.getId()) {
             createNewProject();
         }
     }
-    //=========================Private Methods======================================================
+
+    //==============================================================================================
+    //                              Interface BaseActivity Impl
+    //==============================================================================================
+    @Override
+    MainView getView() {
+        return null;
+    }
+
+    //==============================================================================================
+    //                              Private methods
+    //==============================================================================================
 
     private void initUi() {
 
@@ -69,7 +88,7 @@ public class MainActivity<M extends MainViewImpl> extends BaseActivity implement
     }
 
     private void initUiList() {
-        RealmResults<Project> result =  mRealm.where(Project.class).findAllSortedAsync("date", Sort.DESCENDING);
+        RealmResults<Project> result = mRealm.where(Project.class).findAllSortedAsync("date", Sort.DESCENDING);
         result.addChangeListener(new RealmChangeListener<RealmResults<Project>>() {
             @Override
             public void onChange(RealmResults<Project> element) {
@@ -90,8 +109,8 @@ public class MainActivity<M extends MainViewImpl> extends BaseActivity implement
     }
 
     private void createNewProject() {
-        FragmentTransaction ft = getFragmentManager().beginTransaction();
-        Fragment prev = getFragmentManager().findFragmentByTag("dialog");
+        FragmentTransaction ft   = getFragmentManager().beginTransaction();
+        Fragment            prev = getFragmentManager().findFragmentByTag("dialog");
         if (prev != null) {
             ft.remove(prev);
         }
@@ -103,14 +122,12 @@ public class MainActivity<M extends MainViewImpl> extends BaseActivity implement
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        mRealm.close();
+    public void onResume() {
+
     }
 
-
     @Override
-    MainView getView() {
-        return null;
+    public void onPause() {
+
     }
 }

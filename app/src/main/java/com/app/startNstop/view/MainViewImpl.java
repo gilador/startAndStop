@@ -1,13 +1,15 @@
 package com.app.startNstop.view;
 
+import com.app.startNstop.presenter.MainPresenterImpl;
+
 /**
  * Created by gilad on 16/05/17.
  */
-public class MainViewImpl<P extends MainView.MainViewlListener> implements MainView {
+public class MainViewImpl<V extends MainView.MainViewlListener> implements MainView {
 
-    P mViewListener;
+    V mViewListener;
 
-    public MainViewImpl(P viewListener) {
+    public MainViewImpl(V viewListener) {
         mViewListener = viewListener;
     }
 
