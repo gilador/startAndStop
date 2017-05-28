@@ -2,15 +2,13 @@ package com.app.startNstop.presenter;
 
 import com.app.startNstop.model.MainModel;
 import com.app.startNstop.model.MainModelImpl;
-import com.app.startNstop.view.MainViewImpl;
-
-import javax.inject.Inject;
+import com.app.startNstop.view.MainView;
 
 /**
  * Created by gor on 10/05/2017.
  */
 
-public class MainPresenterImpl<MainView> implements MainPresenter {
+public class MainPresenterImpl implements MainPresenter {
 
     MainModel mModel;
 
@@ -19,6 +17,16 @@ public class MainPresenterImpl<MainView> implements MainPresenter {
     public  MainPresenterImpl(MainView view){
         mModel = new MainModelImpl<MainPresenter>(this);
         mView = view;
+    }
+
+    //==============================================================================================
+    //                              Interface MainPresenter Impl
+    //==============================================================================================
+
+    @Override
+    public void createNewProject(String projectName) {
+        mModel.createNewProject(projectName);
+        mView.showProgressBar(true);
     }
 
     //==============================================================================================
@@ -44,11 +52,6 @@ public class MainPresenterImpl<MainView> implements MainPresenter {
 
     @Override
     public void onViewPause() {
-
-    }
-
-    @Override
-    public void onNewProjectDemand() {
 
     }
 }

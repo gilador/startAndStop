@@ -3,6 +3,7 @@ package com.app.startNstop.view.android.fragment;
 import android.app.DialogFragment;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.app.startNstop.R;
+import com.app.startNstop.presenter.MainPresenter;
 
 import io.realm.Realm;
 
@@ -20,13 +22,18 @@ import io.realm.Realm;
 
 public class NewProjectDialogFragment extends DialogFragment implements View.OnClickListener {
 
+    private MainPresenter mMainPresenter;
     EditText mProjectName;
-    Realm mRealm;
+//    Realm mRealm;
+
+    public void setPresenter(MainPresenter mainPresenter) {
+        mMainPresenter = mainPresenter;
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mRealm = Realm.getDefaultInstance();
+//        mRealm = Realm.getDefaultInstance();
     }
 
     @Override
@@ -45,7 +52,7 @@ public class NewProjectDialogFragment extends DialogFragment implements View.OnC
         switch (v.getId()){
             case R.id.ok:{
                 if(mProjectName.getText() != null && !mProjectName.equals("")){
-                    createNewProject(mProjectName.getText());
+                    mMainPresenter.createNewProject(String.valueOf(mProjectName.getText()));
                 }
             }
             case R.id.cancel:{
@@ -54,35 +61,15 @@ public class NewProjectDialogFragment extends DialogFragment implements View.OnC
         }
     }
 
+
+
     @Override
     public void onDestroy() {
         super.onDestroy();
-        mRealm.close();
+//        mRealm.close();
     }
 
     private void createNewProject(String text) {
-
     }
 
-    private class DownloadFilesTask extends AsyncTask<URL, Integer, Long> {
-        protected Long doInBackground(URL... urls) {
-            int count = urls.length;
-            long totalSize = 0;
-            for (int i = 0; i < count; i++) {
-                totalSize += Downloader.downloadFile(urls[i]);
-                publishProgress((int) ((i / (float) count) * 100));
-                // Escape early if cancel() is called
-                if (isCancelled()) break;
-            }
-            return totalSize;
-        }
-
-        protected void onProgressUpdate(Integer... progress) {
-            setProgressPercent(progress[0]);
-        }
-
-        protected void onPostExecute(Long result) {
-            showDialog("Downloaded " + result + " bytes");
-        }
-    }
 }

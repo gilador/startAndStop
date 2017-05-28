@@ -1,27 +1,26 @@
 package com.app.startNstop.view.android.activity;
 
+
 import android.support.v7.app.AppCompatActivity;
 
+import com.app.startNstop.presenter.IPresenter;
 import com.app.startNstop.view.IView;
 
-
 /**
- * Created by gor on 12/05/2017.
+ * Created by gor on 26/05/2017.
  */
 
-public abstract class BaseActivity<V extends IView> extends AppCompatActivity {
+public abstract class BaseActivity extends AppCompatActivity implements IView{
 
-    abstract V getView();
-
+    @Override
     protected void onResume() {
         super.onResume();
-        getView().onResume();
+        getPresenter().onViewResume();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        getView().onPause();
+        getPresenter().onViewPause();
     }
-
 }

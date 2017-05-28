@@ -2,6 +2,7 @@ package com.app.startNstop.view.android.activity;
 
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.app.MediaRouteButton;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -9,11 +10,13 @@ import android.widget.Button;
 
 import com.app.startNstop.R;
 import com.app.startNstop.model.db.Project;
+import com.app.startNstop.presenter.IPresenter;
 import com.app.startNstop.presenter.MainPresenter;
 import com.app.startNstop.presenter.MainPresenterImpl;
 import com.app.startNstop.view.MainView;
 import com.app.startNstop.view.android.adapter.ProjectsAdapter;
 import com.app.startNstop.view.android.fragment.NewProjectDialogFragment;
+import com.singh.daman.proprogressviews.DottedArcProgress;
 
 import io.realm.Realm;
 import io.realm.RealmChangeListener;
@@ -21,7 +24,7 @@ import io.realm.RealmResults;
 import io.realm.Sort;
 
 
-public class MainActivity extends BaseActivity<MainView> implements View.OnClickListener, MainView {
+public class MainActivity extends BaseActivity implements MainView, View.OnClickListener {
 
     //==============================================================================================
     //                              Statics
@@ -31,11 +34,21 @@ public class MainActivity extends BaseActivity<MainView> implements View.OnClick
     //==============================================================================================
     //                              Privates
     //==============================================================================================
-    private RecyclerView    mProjectTilesList;
-    private Button          mFab;
-    private ProjectsAdapter mProjectAdapter;
-    private Realm           mRealm;
-    private MainPresenter   mMainPresenter;
+    private MainPresenter mMainPresenter;
+    private Realm         mRealm;
+
+    private RecyclerView      mProjectTilesList;
+    private Button            mFab;
+    private ProjectsAdapter   mProjectAdapter;
+    private DottedArcProgress mProgress;
+
+    //==============================================================================================
+    //                              BaseActivity
+    //==============================================================================================
+    @Override
+    public IPresenter getPresenter() {
+        return mMainPresenter;
+    }
 
     //==============================================================================================
     //                              Activity Impl
@@ -56,21 +69,22 @@ public class MainActivity extends BaseActivity<MainView> implements View.OnClick
     }
 
     //==============================================================================================
+    //                              Interface MainView
+    //==============================================================================================
+    @Override
+    public void showProgressBar(boolean isToShow) {
+        int visibility = isToShow ? View.VISIBLE : View.GONE;
+        mProgress.setVisibility(visibility);
+    }
+
+    //==============================================================================================
     //                              Interface View.OnClickListener Impl
     //==============================================================================================
     @Override
     public void onClick(View v) {
         if (v.getId() == mFab.getId()) {
-            createNewProject();
+            showNewProjectDialog();
         }
-    }
-
-    //==============================================================================================
-    //                              Interface BaseActivity Impl
-    //==============================================================================================
-    @Override
-    MainView getView() {
-        return null;
     }
 
     //==============================================================================================
@@ -108,7 +122,7 @@ public class MainActivity extends BaseActivity<MainView> implements View.OnClick
         mFab = (Button) findViewById(R.id.fabButton);
     }
 
-    private void createNewProject() {
+    private void showNewProjectDialog() {
         FragmentTransaction ft   = getFragmentManager().beginTransaction();
         Fragment            prev = getFragmentManager().findFragmentByTag("dialog");
         if (prev != null) {
@@ -118,16 +132,7 @@ public class MainActivity extends BaseActivity<MainView> implements View.OnClick
 
         // Create and show the dialog.
         NewProjectDialogFragment newFragment = new NewProjectDialogFragment();
+        newFragment.setPresenter(mMainPresenter);
         newFragment.show(ft, "dialog");
-    }
-
-    @Override
-    public void onResume() {
-
-    }
-
-    @Override
-    public void onPause() {
-
     }
 }

@@ -5,6 +5,8 @@ package com.app.startNstop.model;
  */
 
 public interface MainModel extends IModel {
+    void createNewProject(String projectName);
+
     interface MainModelListener extends IModelListener{
 
     }

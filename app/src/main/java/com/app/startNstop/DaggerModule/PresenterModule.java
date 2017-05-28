@@ -2,7 +2,6 @@ package com.app.startNstop.DaggerModule;
 
 import com.app.startNstop.presenter.MainPresenter;
 import com.app.startNstop.presenter.MainPresenterImpl;
-import com.app.startNstop.view.MainViewImpl;
 import com.app.startNstop.view.android.activity.MainActivity;
 
 import javax.inject.Singleton;

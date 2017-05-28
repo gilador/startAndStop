@@ -1,8 +1,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".view.android.activity.MainActivity">
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context=".view.android.activity.MainActivity">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/projectTilesList"
@@ -11,7 +12,7 @@
         android:layout_alignParentStart="true"
         android:layout_margin="15dp"
         android:padding="7dp"
-        android:scrollbars="vertical" />
+        android:scrollbars="vertical"/>
 
     <Button
         android:id="@+id/fabButton"
@@ -21,6 +22,14 @@
         android:layout_alignParentEnd="true"
         android:layout_marginBottom="10dp"
         android:layout_marginEnd="10dp"
-        android:background="@drawable/fab" />
+        android:background="@drawable/fab"/>
+
+    <com.singh.daman.proprogressviews.DottedArcProgress
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="invisible"
+        app:dots_color="@android:color/holo_red_dark"
+        app:dots_radius="30dp"/>
 
 </RelativeLayout>
