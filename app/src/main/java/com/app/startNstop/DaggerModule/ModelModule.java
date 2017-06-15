@@ -18,7 +18,7 @@ public class ModelModule {
     @Provides
     @Singleton
     MainModel providesLocationModel(MainModel.MainModelListener listener) {
-        return new MainModelImpl(listener);
+        return new MainModelImpl(listener, null);
     }
 
 }

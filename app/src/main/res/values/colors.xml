@@ -3,5 +3,10 @@
     <color name="yellow">#f2c455</color>
     <color name="gray">#8a8a8a</color>
     <color name="blue">#0b345a</color>
+    <color name="blue_50">#143aa0ff</color>
+    <color name="red">#8a0b0b</color>
+    <color name="green">#45f47a</color>
     <color name="content_gray">#595959</color>
+    <color name="background_gray">#373737</color>
+    <color name="milk">#fffef8</color>
 </resources>

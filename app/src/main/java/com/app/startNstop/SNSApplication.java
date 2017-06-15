@@ -2,12 +2,6 @@ package com.app.startNstop;
 
 import android.app.Application;
 
-import com.app.startNstop.model.MainModel;
-import com.app.startNstop.model.MainModelImpl;
-import com.app.startNstop.presenter.MainPresenter;
-import com.app.startNstop.presenter.MainPresenterImpl;
-import com.app.startNstop.view.MainView;
-
 /**
  * Created by gor on 11/05/2017.
  */

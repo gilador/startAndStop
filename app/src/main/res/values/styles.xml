@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="android:Theme.Material.Light">
+    <style name="AppTheme" parent="Theme.AppCompat.Light">
         <!-- Customize your theme here. -->
     </style>
 
@@ -42,19 +42,16 @@
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">10dp</item>
         <item name="android:gravity">center</item>
+        <item name="android:layout_width">25dp</item>
+        <item name="android:layout_height">25dp</item>
     </style>
 
     <style name="button.ok">
-        <item name="android:background">@drawable/yellow_button_background</item>
-        <item name="android:layout_width">60dp</item>
-        <item name="android:layout_height">25dp</item>
         <item name="android:layout_gravity">right</item>
     </style>
 
     <style name="button.cancel">
-        <item name="android:background">@drawable/gray_button_background</item>
-        <item name="android:layout_width">60dp</item>
-        <item name="android:layout_height">25dp</item>
         <item name="android:layout_gravity">left</item>
     </style>
+
 </resources>

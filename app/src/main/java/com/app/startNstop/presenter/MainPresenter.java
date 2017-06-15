@@ -1,7 +1,7 @@
 package com.app.startNstop.presenter;
 
 import com.app.startNstop.model.MainModel;
-import com.app.startNstop.view.MainView;
+import com.app.startNstop.view.main.MainView;
 
 /**
  * Created by gor on 10/05/2017.
@@ -9,4 +9,8 @@ import com.app.startNstop.view.MainView;
 
 public interface MainPresenter extends IPresenter, MainModel.MainModelListener, MainView.MainViewListener {
     void createNewProject(String projectName);
+
+    void punchIn();
+
+    void punchOut();
 }

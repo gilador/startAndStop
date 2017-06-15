@@ -7,7 +7,7 @@ ext {
     TARGET_SDK = 25
     COMPILE_SDK = 25
     BUILD_TOOLS = "25.0.0"
-    SUPPORT_LIB = "25.0.1"
+    SUPPORT_LIB = "25.1.1"
     DAGGER = "2.10"
 }
 

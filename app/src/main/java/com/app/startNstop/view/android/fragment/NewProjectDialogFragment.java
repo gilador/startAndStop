@@ -24,7 +24,6 @@ public class NewProjectDialogFragment extends DialogFragment implements View.OnC
 
     private MainPresenter mMainPresenter;
     EditText mProjectName;
-//    Realm mRealm;
 
     public void setPresenter(MainPresenter mainPresenter) {
         mMainPresenter = mainPresenter;
@@ -33,7 +32,6 @@ public class NewProjectDialogFragment extends DialogFragment implements View.OnC
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        mRealm = Realm.getDefaultInstance();
     }
 
     @Override
